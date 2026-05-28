@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receipt</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section class="receipt-container" id="receipt"></section>
+
+<button class="print-btn" onclick="window.print()">Print Receipt</button>
+
+<script>
+
+let id = new URLSearchParams(window.location.search).get("id");
+
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let order = orders.find(o => o.id == id);
+
+let box = document.getElementById("receipt");
+
+let html = `
+<h2>Receipt</h2>
+<p>${order.date}</p>
+<hr>
+`;
+
+for(let i in order.items){
+
+  html += `
+    <div class="receipt-item">
+      <span>${order.items[i].name}</span>
+      <span>x${order.items[i].qty}</span>
+    </div>
+  `;
+}
+
+html += `<h3>Total: ₱${order.total}</h3>`;
+
+box.innerHTML = html;
+
+</script>
+
+</body>
+</html>

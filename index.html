@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halo-Halo ni Marites</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar">
+
+    <div class="logo-container">
+      <img src="image.png" class="logo">
+      <h1>Halo-Halo ni Marites</h1>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#" onclick="openCart()">Cart (<span id="cart-count">0</span>)</a></li>
+    </ul>
+
+  </nav>
+</header>
+
+<section class="hero">
+
+  <div class="hero-text">
+    <h2>Refreshing. Creamy. Pinoy Sarap!</h2>
+    <p>Halo-Halo ni Marites — sweet happiness in every cup.</p>
+    <a class="btn" href="products.html">Order Now</a>
+  </div>
+
+  <div class="hero-image">
+    <img src="halohalo.JPEG">
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 Halo-Halo ni Marites</p>
+</footer>
+
+<!-- CART -->
+<div id="cart-modal" class="cart-modal">
+  <div class="cart-content">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <h3 id="cart-total">Total: ₱0</h3>
+
+    <div class="cart-buttons">
+      <button onclick="goCheckout()">Checkout</button>
+      <button class="remove-btn" onclick="closeCart()">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

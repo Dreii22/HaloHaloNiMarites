@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar">
+    <h1>Checkout</h1>
+  </nav>
+</header>
+
+<section class="checkout-container">
+
+  <h2>Order Summary</h2>
+
+  <div id="items"></div>
+
+  <div class="checkout-total" id="total"></div>
+
+  <select id="payment">
+    <option>Cash on Delivery</option>
+    <option>GCash</option>
+  </select>
+
+  <button onclick="placeOrder()">Place Order</button>
+
+</section>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || {};
+let total = 0;
+
+for(let id in cart){
+
+  let item = cart[id];
+
+  document.getElementById("items").innerHTML += `
+    <div class="checkout-item">
+      <span>${item.name} x${item.qty}</span>
+      <span>₱${item.qty * item.price}</span>
+    </div>
+  `;
+
+  total += item.qty * item.price;
+}
+
+document.getElementById("total").innerText = "Total: ₱" + total;
+
+function placeOrder(){
+
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+  let order = {
+    id: Date.now(),
+    items: cart,
+    total: total,
+    payment: document.getElementById("payment").value,
+    date: new Date().toLocaleString()
+  };
+
+  orders.push(order);
+
+  localStorage.setItem("orders", JSON.stringify(orders));
+  localStorage.removeItem("cart");
+
+  window.location.href = "receipt.html?id=" + order.id;
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar">
+
+    <div class="logo-container">
+      <img src="image.png" class="logo">
+      <h1>Products</h1>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#" onclick="openCart()">Cart (<span id="cart-count">0</span>)</a></li>
+    </ul>
+
+  </nav>
+</header>
+
+<section class="products">
+
+<h2 class="section-title">Our Halo-Halo Menu</h2>
+
+<div class="product-grid">
+
+  <div class="product-card">
+    <img src="kalandian.jpeg">
+    <h3>Kalandian Halo-Halo</h3>
+    <span>₱120</span>
+    <div class="button-group">
+      <button onclick="addToCart('kalandian',120,'Kalandian')">Add</button>
+      <button class="remove-btn" onclick="removeFromCart('kalandian')">Remove</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="ube.jpeg">
+    <h3>Chismosang Ube</h3>
+    <span>₱140</span>
+    <div class="button-group">
+      <button onclick="addToCart('ube',140,'Ube')">Add</button>
+      <button class="remove-btn" onclick="removeFromCart('ube')">Remove</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="saltedegg.jpeg">
+    <h3>Salted Egg Halo</h3>
+    <span>₱150</span>
+    <div class="button-group">
+      <button onclick="addToCart('saltedegg',150,'Salted Egg')">Add</button>
+      <button class="remove-btn" onclick="removeFromCart('saltedegg')">Remove</button>
+    </div>
+  </div>
+
+</div>
+
+</section>
+
+<!-- CART -->
+<div id="cart-modal" class="cart-modal">
+  <div class="cart-content">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <h3 id="cart-total">Total: ₱0</h3>
+
+    <div class="cart-buttons">
+      <button onclick="goCheckout()">Checkout</button>
+      <button class="remove-btn" onclick="closeCart()">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
